@@ -1,7 +1,7 @@
 import { from, of } from "rxjs";
 
 describe("Basic Observables", () => {
-  describe(of, () => {
+  describe("of", () => {
     it("should create an observable from its arguments", () => {
       const result = [];
 
@@ -12,7 +12,7 @@ describe("Basic Observables", () => {
     });
   });
 
-  describe(from, () => {
+  describe("from", () => {
     it("should create an observable", () => {
       const result = [];
 
