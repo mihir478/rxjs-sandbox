@@ -1,4 +1,4 @@
-import { from, of } from "rxjs";
+import { from, Observable, of } from "rxjs";
 
 describe("Exercise: Creating Observables", () => {
   describe("of", () => {
@@ -117,6 +117,22 @@ describe("Exercise: Creating Observables", () => {
           done();
         },
       });
+    });
+
+    it("should deal with a bespoke observable (BONUS)", () => {
+      const result = [];
+
+      const observable$ = new Observable((subscriber) => {
+        subscriber.next("John");
+        subscriber.next("Paul");
+        subscriber.next("George");
+        subscriber.next("Ringo");
+        subscriber.complete();
+      });
+
+      observable$.subscribe((value) => result.push(value));
+
+      expect(result).toEqual(["John", "Paul", "George", "Ringo"]);
     });
   });
 });
