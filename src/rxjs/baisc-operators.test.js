@@ -8,6 +8,7 @@ import {
   reduce,
   scan,
   takeWhile,
+  startWith,
 } from "rxjs/operators";
 import { fibonacci } from "../utilities/fibonacci";
 
@@ -66,7 +67,8 @@ describe("Basic Operators", () => {
   it("should sum of the total of all of the Fibonacci numbers under 200", async () => {
     const observable$ = from(fibonacci()).pipe(
       takeWhile((n) => n < 200),
-      reduce((acc, n) => acc + n)
+      startWith(0),
+      reduce((acc, n) => acc + n, 0)
     );
 
     expect(await getResult(observable$)).toEqual([376]);
