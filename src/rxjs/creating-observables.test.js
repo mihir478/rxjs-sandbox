@@ -107,13 +107,10 @@ describe("Exercise: Creating Observables", () => {
     it("should create an observable from a promise that rejects", (done) => {
       const promise = Promise.reject({ error: "Something terrible happened" });
 
-      // Need async await here for tests to pass
-      // https://github.com/facebook/jest/issues/11607
-
       const observable$ = from(promise);
       observable$.subscribe({
-        error: async (error) => {
-          await expect(error).toEqual({ error: "Something terrible happened" });
+        error: (error) => {
+          expect(error).toEqual({ error: "Something terrible happened" });
           done();
         },
       });
