@@ -80,7 +80,7 @@ describe("Basic Operators", () => {
       { currentSpeed: 100 },
       { currentSpeed: 200 },
       { distance: 500 }
-    ).pipe(scan((acc, o) => ({ ...acc, ...o })));
+    ).pipe(scan((acc, o) => ({ ...acc, ...o }), {}));
 
     expect(await getResult(observable$)).toEqual([
       { isRunning: true },
